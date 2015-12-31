@@ -1,0 +1,18 @@
+<div class="container">
+    <table class="table tabel-striped">
+        <thead>
+        <tr>
+            <th ng-repeat="column in columns">{{column.label}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="result in results">
+            <td  ng-repeat="column in columns">{{vm.getFilterData(result, column.field)}}</td>
+            <td>
+                <button class="btn btn-danger btn-sm" ng-click="vm.remove(result._id)">Remove</button>
+                <button class="btn btn-warning btn-sm" ng-click="edit(result._id)">Edit</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
