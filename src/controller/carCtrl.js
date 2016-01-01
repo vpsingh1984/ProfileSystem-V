@@ -1,19 +1,14 @@
 (function(){
 
 	myApp.controller('carlistCtrl', carlistCtrl);
-//myApp.controller('carlistCtrl', ['$scope', '$http','CarlistService', function($scope, $http,CarlistService){
-	function carlistCtrl(CarlistService) {
 
-		//var refresh;
+	function carlistCtrl(CarlistService, $uibModal, $log, $scope) {
+
 		var vm = this;
 		vm.results = [];
+		vm.confirmModal=confirmModal;
+
 		initialize();
-		vm.remove = remove;
-
-
-		function remove(id){
-			alert(id);
-		}
 
 		function initialize() {
 			console.log("calling car list");
@@ -31,7 +26,42 @@
 				field: "price"
 			}];
 
+			vm.itemActions = [{
+				label: "Remove",
+				handler: vm.confirmModal,
+			}];
 		};
+
+		function confirmModal(item) {
+			//alert('vijay');
+		    var modalInstance = $modal.open({
+		      animation: true,
+		      templateUrl: "car-list/confirm_modal.html",
+		      controller: 'ModalInstanceCtrl as vm',
+
+		      size: "sm",
+		      resolve: {
+		        item: function () {
+		           return item;
+		         }
+		      }
+		    });
+
+		    modalInstance.result.then(function (response) {
+		      	var flag = response;
+		      	console.log("close");
+		      	if(flag){
+			      	CarlistService.getList().then(function (response) {
+						vm.results = response;
+					});
+		      	}
+		    }, function () {
+		    	console.log("Dismiss");
+		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+		  };
+
+
 	}
 
 }());
