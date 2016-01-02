@@ -7,6 +7,7 @@
 		var vm = this;
 		vm.results = [];
 		vm.confirmModal=confirmModal;
+		vm.addCarModal = addCarModal;
 
 		initialize();
 
@@ -29,6 +30,14 @@
 			vm.itemActions = [{
 				label: "Remove",
 				handler: vm.confirmModal,
+			},{
+				label: "Edit",
+				handler: vm.editCarModal,
+			}];
+
+			vm.otherActions = [{
+				label: "Add New Car",
+				handler: vm.addCarModal,
 			}];
 		};
 
@@ -58,6 +67,31 @@
 		    }, function () {
 		    	console.log("Dismiss");
 		      $log.info('Modal dismissed at: ' + new Date());
+		    });
+		};
+
+		function addCarModal(car) {
+			//alert('vijay');
+		    var modalInstance = $uibModal.open({
+		      animation: true,
+		      templateUrl: "car-list/add_carlist.html",
+		      controller: 'AddCarCtrl as vm',
+		      size: "md",
+		      resolve: {
+		        car: function () {
+		           return car;
+		        }
+		      }
+		    });
+
+		    modalInstance.result.then(function (response) {
+		      	//var flag = response;
+		      	CarlistService.getList().then(function (response) {
+					vm.results = response;
+				});
+		    }, function () {
+		    	console.log("Error in adding");
+		      //$log.info('Modal dismissed at: ' + new Date());
 		    });
 		};
 

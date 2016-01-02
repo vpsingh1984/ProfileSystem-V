@@ -1,0 +1,30 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+        <h3>Add New Car</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-border">
+            <tbody>
+                <tr><td>Brand</td>
+                    <td><input name="name" type="text" class="form-control" ng-model="cars.brand" /></td>
+                </tr>
+                <tr>
+                    <td>Car Modal</td>
+                    <td><input name="email" type="text" class="form-control" ng-model="cars.modal" /></td>
+                </tr>
+                <tr><td>Car Price</td>
+                    <td><input name="number" type="text" class="form-control" ng-model="cars.price" /></td>
+                    <td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-right">
+                        <button type="button" class="btn btn-primary" ng-click="vm.addCar(cars)">Add Car</button>
+                        <button class="btn btn-default" ng-click="vm.close()">Cancel</button>
+                        <button type="button" class="btn btn-info" ng-click="vm.update()">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -9,9 +9,9 @@ myApp.service('CarlistService', ['$http', '$q', function($http, $q) {
         return deferred.promise;
     }
 
-    this.addCarList = function (cars){
+    this.addCarList = function (car){
         var deferred = $q.defer();
-        $http.post('/product/carlist', cars).success(deferred.resolve)
+        $http.post('/product/carlist', car).success(deferred.resolve)
             .error(deferred.reject);
 
         return deferred.promise;
