@@ -1,0 +1,40 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading"> 
+        <h3>Add New Contact</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-border">
+            <tbody>
+                <tr><td>Name</td>
+                    <td><input name="name" type="text" class="form-control" ng-model="contact.name" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input name="email" type="text" class="form-control" ng-model="contact.email" /></td>
+                </tr>
+                <tr><td>Number</td>
+                    <td><input name="number" type="text" class="form-control" ng-model="contact.number" /></td>
+                    <td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-right">
+                        <button type="button" class="btn btn-primary" ng-click="vm.addContact(contact)">Add Record</button>
+                        <button class="btn btn-default" ng-click="vm.close()">Cancel</button>
+                        <button type="button" class="btn btn-info" ng-click="vm.update()">Update</button>
+                    </td>
+                </tr>
+                <!-- <tr ng-repeat="contact in contactlist">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.number}}</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" ng-click="remove(contact._id)">Remove</button>
+                        <button class="btn btn-warning btn-sm" ng-click="edit(contact._id)">Edit</button>
+                        <a href="#/show" class="btn btn-warning btn-sm" ng-click="show(contact._id)">Show</a>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>

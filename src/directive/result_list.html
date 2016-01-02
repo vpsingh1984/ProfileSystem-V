@@ -1,21 +1,27 @@
 <div class="container">
-    <table class="table tabel-striped">
-        <thead>
-        <tr>
-            <th ng-repeat="column in columns">{{column.label}}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="result in results">
-            <td  ng-repeat="column in columns">{{vm.getFilterData(result, column.field)}}</td>
-            <td>
-                <!--<button class="btn btn-danger btn-sm" ng-click="vm.remove(result._id)">Remove</button>-->
-                <!--<button class="btn btn-warning btn-sm" ng-click="edit(result._id)">Edit</button>-->
-                <button class="btn btn-default" ng-click="itemActions[0].handler(result)">{{itemActions[0].label}}</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="panel panel-default">
+        <div class="panel-heading"> 
+            <button class="btn btn-success" ng-click="otherActions[0].handler()">{{otherActions[0].label}}</button>
+        </div>
+        <div class="panel-body">
+            <table class="table tabel-striped">
+                <thead>
+                <tr>
+                    <th ng-repeat="column in columns">{{column.label}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="result in results">
+                    <td  ng-repeat="column in columns">{{vm.getFilterData(result, column.field)}}</td>
+                    <td>
+                        <button class="btn btn-default" ng-click="itemActions[1].handler(result)">{{itemActions[1].label}}</button>
+                        <button class="btn btn-default" ng-click="itemActions[0].handler(result)">{{itemActions[0].label}}</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- <button ng-click="confirmModal()" type="button">Click Modal</button> -->

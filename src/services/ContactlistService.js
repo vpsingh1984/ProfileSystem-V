@@ -17,6 +17,33 @@ myApp.service('ContactlistService', ['$http', '$q', function($http, $q) {
         return deferred.promise;
     }
 
+    this.remove = function (id){
+        var deferred = $q.defer();
+        console.log(id);
+        $http.delete('/product/contactlist/' + id).success(deferred.resolve)
+            .error(deferred.reject);
+
+        return deferred.promise;
+    }
+
+    this.edit = function (id){
+        var deferred = $q.defer();
+        console.log(id);
+        $http.get('/product/contactlist/' + id).success(deferred.resolve)
+            .error(deferred.reject);
+
+        return deferred.promise;
+    }
+
+    this.update = function(car){
+        var deferred = $q.defer();
+        //console.log("data comes into service");
+        console.log(car);
+        $http.put('/product/contactlist/', car).success(deferred.resolve)
+            .error(deferred.reject);
+        return deferred.promise;
+    }
+
 }]);
 
 

@@ -9,11 +9,11 @@ myApp.config(['$routeProvider',
                 controller: 'signinCtrl as sign'
             }).
             when('/contactlist', {
-                templateUrl: 'views/contactlist.html',
+                templateUrl: 'contact-list/contactlist.html',
                 controller: 'contactlistCtrl as vm'
             }).
             when('/carlist', {
-                templateUrl: 'views/carlist.html',
+                templateUrl: 'car-list/carlist.html',
                 controller: 'carlistCtrl as vm'
             }).
             otherwise({

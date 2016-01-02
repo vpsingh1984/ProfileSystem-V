@@ -34,10 +34,10 @@
 
 		function confirmModal(item) {
 			//alert('vijay');
-		    var modalInstance = $modal.open({
+		    var modalInstance = $uibModal.open({
 		      animation: true,
-		      templateUrl: "car-list/confirm_modal.html",
-		      controller: 'ModalInstanceCtrl as vm',
+		      templateUrl: "contact-list/confirm_modal.html",
+		      controller: 'CarConfirmModalCtrl as vm',
 
 		      size: "sm",
 		      resolve: {
@@ -59,7 +59,7 @@
 		    	console.log("Dismiss");
 		      $log.info('Modal dismissed at: ' + new Date());
 		    });
-		  };
+		};
 
 
 	}

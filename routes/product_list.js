@@ -72,4 +72,13 @@ router.post('/contactlist', function(req, res){
 	})
 });
 
+router.delete('/contactlist/:id', function(req, res){
+	//console.log("Req: "+req+"  Respose: "+res);
+	var id = req.params.id;
+	console.log(id);
+	db.contactlist.remove({_id: mongojs.ObjectId(id)}, function(err, doc){
+		res.json(doc);
+	});
+});
+
 module.exports = router;

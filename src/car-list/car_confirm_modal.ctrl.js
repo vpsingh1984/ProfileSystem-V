@@ -1,5 +1,5 @@
 
-myApp.controller('ModalInstanceCtrl', function (CarlistService, $modalInstance, item) {
+myApp.controller('CarConfirmModalCtrl', function (CarlistService, $modalInstance, item) {
   var vm = this;
   vm.item = item;
   vm.message = "Are You Sure?";

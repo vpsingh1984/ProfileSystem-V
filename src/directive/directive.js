@@ -11,6 +11,7 @@
                 results: "=",
                 columns:"=",
                 itemActions: "=",
+                otherActions: "=",
             },
             templateUrl: "directive/result_list.html",
             transclude: true,
