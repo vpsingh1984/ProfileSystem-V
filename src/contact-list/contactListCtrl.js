@@ -111,8 +111,8 @@
 
 		    modalInstance.result.then(function (response) {
 		      	vm.contact = response;
-		      	ContactlistService.getList().then(function (response) {
-					vm.results = response;
+		      	ContactlistService.getList(contact).then(function (response) {
+					vm.contact = response;
 				});
 		    }, function () {
 		    	console.log("Error in adding");

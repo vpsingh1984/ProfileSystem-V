@@ -45,7 +45,7 @@
 			//alert('vijay');
 		    var modalInstance = $uibModal.open({
 		      animation: true,
-		      templateUrl: "contact-list/confirm_modal.html",
+		      templateUrl: "car-list/car_confirm_modal.html",
 		      controller: 'CarConfirmModalCtrl as vm',
 
 		      size: "sm",

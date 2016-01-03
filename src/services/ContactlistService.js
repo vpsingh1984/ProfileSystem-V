@@ -26,10 +26,10 @@ myApp.service('ContactlistService', ['$http', '$q', function($http, $q) {
         return deferred.promise;
     }
 
-    this.edit = function (id){
+    this.edit = function (contact){
         var deferred = $q.defer();
-        console.log(id);
-        $http.get('/product/contactlist/' + id).success(deferred.resolve)
+        console.log(contact);
+        $http.get('/product/contactlist/' + contact.id).success(deferred.resolve)
             .error(deferred.reject);
 
         return deferred.promise;
