@@ -2,12 +2,12 @@
     "use strict";
     myApp.controller("ResultsListCtrl", ResultsListCtrl);
     function ResultsListCtrl(){
-        var myCtrl = this;
+        var vm = this;
         initialize();
-        myCtrl.remove = remove;
+        vm.remove = remove;
 
         function initialize() {
-            myCtrl.getFilterData = getFilterData;
+            vm.getFilterData = getFilterData;
         }
         function getFilterData(obj, key){
             //console.log(obj);

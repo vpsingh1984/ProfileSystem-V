@@ -12,10 +12,14 @@
 
 		initialize();
 
-		function initialize() {
+
+		function fetchData(){
 			ContactlistService.getList().then(function (response) {
 				vm.results = response;
 			});
+		}
+		function initialize() {
+			fetchData();
 			vm.columns = [{
 				label: "Name",
 				field: "name"
@@ -59,9 +63,7 @@
 		    });
 
 		    modalInstance.result.then(function (response) {
-		      	ContactlistService.getList().then(function (response) {
-					vm.results = response;
-				});
+				fetchData();
 		    }, function () {
 		    	console.log("Dismiss");
 		      $log.info('Modal dismissed at: ' + new Date());
@@ -85,9 +87,7 @@
 
 		    modalInstance.result.then(function (response) {
 		      	//var flag = response;
-		      	ContactlistService.getList().then(function (response) {
-					vm.results = response;
-				});
+				fetchData();
 		    }, function () {
 		    	console.log("Error in adding");
 		      //$log.info('Modal dismissed at: ' + new Date());
@@ -96,24 +96,21 @@
 
 		function editContactModal(contact) {
 			//alert('vijay');
+
 		    var modalInstance = $uibModal.open({
 		      animation: true,
 		      templateUrl: "contact-list/edit_contactlist.html",
 		      controller: 'EditContactCtrl as vm',
-
 		      size: "md",
 		      resolve: {
-		        contact: function () {
-		           return contact;
+		        contactId: function () {
+		           return contact._id;
 		        }
 		      }
 		    });
 
 		    modalInstance.result.then(function (response) {
-		      	vm.contact = response;
-		      	ContactlistService.getList(contact).then(function (response) {
-					vm.contact = response;
-				});
+				fetchData();
 		    }, function () {
 		    	console.log("Error in adding");
 		      //$log.info('Modal dismissed at: ' + new Date());

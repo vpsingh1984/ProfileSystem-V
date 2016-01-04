@@ -7,13 +7,13 @@ router.get('/carlist', function(req, res){
 	console.log('get request for car');
 
 	db.carlist.find(function(err, docs){
-		console.log(docs);
+		//console.log(docs);
 		res.json(docs);
 	});
 });
 
 router.post('/carlist', function(req, res){
-	console.log(req.body);
+	//console.log(req.body);
 	db.carlist.insert(req.body, function(err, doc){
 		res.json(doc);
 	})
@@ -22,7 +22,7 @@ router.post('/carlist', function(req, res){
 router.delete('/carlist/:id', function(req, res){
 	//console.log("Req: "+req+"  Respose: "+res);
 	var id = req.params.id;
-	console.log(id);
+	//console.log(id);
 	db.carlist.remove({_id: mongojs.ObjectId(id)}, function(err, doc){
 		res.json(doc);
 	});
@@ -30,7 +30,7 @@ router.delete('/carlist/:id', function(req, res){
 
 router.get('/carlist/:id', function(req, res){
 	var id = req.params.id;
-	console.log(id);
+	//console.log(id);
 	db.carlist.findOne({_id: mongojs.ObjectId(id)}, function(err, doc){
 		res.json(doc);
 	});
@@ -39,7 +39,6 @@ router.get('/carlist/:id', function(req, res){
 router.put('/carlist/', function(req, res){
 	var car = req.body;
 	console.log("Data received on server");
-	console.log(car);
 	var id = car._id;
 	db.carlist.findAndModify({
 			query: {_id: mongojs.ObjectId(id)},
@@ -57,16 +56,16 @@ router.put('/carlist/', function(req, res){
 
 //contact list
 router.get('/contactlist', function(req, res){
-	console.log('get request');
+	//console.log('get request');
 	db.contactlist.find(function(err, docs){
 		console.log("*******************************************");
-		console.log(docs);
+		//console.log(docs);
 		res.json(docs);
 	});
 });
 
 router.post('/contactlist', function(req, res){
-	console.log(req.body);
+	//console.log(req.body);
 	db.contactlist.insert(req.body, function(err, doc){
 		res.json(doc);
 	})
@@ -77,6 +76,28 @@ router.delete('/contactlist/:id', function(req, res){
 	var id = req.params.id;
 	console.log(id);
 	db.contactlist.remove({_id: mongojs.ObjectId(id)}, function(err, doc){
+		res.json(doc);
+	});
+});
+
+router.get('/contactlist/:id', function(req, res){
+	var id = req.params.id;
+	console.log(id);
+	db.contactlist.findOne({_id: mongojs.ObjectId(id)}, function(err, docs){
+		res.json(docs);
+	});
+});
+
+router.put('/contactlist/', function(req, res){
+	var id = req.body._id;
+	console.log(req.body.name);
+	db.contactlist.findAndModify({query: {_id: mongojs.ObjectId(id)},
+		update: {$set:{
+			name: req.body.name,
+			email: req.body.email,
+			number: req.body.number
+		}},
+		new: true}, function(err, doc){
 		res.json(doc);
 	});
 });

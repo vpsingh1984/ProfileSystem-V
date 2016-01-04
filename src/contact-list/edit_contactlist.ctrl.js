@@ -1,30 +1,27 @@
 
-myApp.controller('EditContactCtrl', function (ContactlistService, $uibModalInstance, contact) {
+myApp.controller('EditContactCtrl', function (ContactlistService, $uibModalInstance, contactId) {
   var vm = this;
-  var contact = contact;
-  // vm.contact.name = contact.name;
-  // vm.contact.email = contact.email;
-  // vm.contact.number = contact.number;
+  //vm.contact = contact;
+  getContact(contactId);
+  vm.updateContact = updateContact;
 
   vm.close = function (){
     $uibModalInstance.close();
   }
 
-  vm.contact = function (contact){
-    alert('hello');
-    var contact = contact;
-    vm.contact.name = contact.name;
-    vm.contact.email = contact.email;
-    vm.contact.number = contact.number;
-    
-    ContactlistService.edit(contact).then(function (response) {
-      $uibModalInstance.close();
-    });
-  }
 
-  vm.updateContact = function(contact){
-    ContactlistService.update(contact.id).then(function(response){
-      refresh();
+  function getContact(id) {
+    console.log(id);
+    ContactlistService.getContactById(id).then(function(response){
+      vm.contact = response;
+    }).catch(function(err){
+      console.log(err);
+    })
+  };
+
+  function updateContact(contact){
+    ContactlistService.update(contact).then(function(response){
+      $uibModalInstance.close();
     }).catch(function(err){
       console.log(err);
     })

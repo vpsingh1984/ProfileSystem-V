@@ -26,20 +26,20 @@ myApp.service('ContactlistService', ['$http', '$q', function($http, $q) {
         return deferred.promise;
     }
 
-    this.edit = function (contact){
+    this.getContactById = function (id){
         var deferred = $q.defer();
-        console.log(contact);
-        $http.get('/product/contactlist/' + contact.id).success(deferred.resolve)
+        console.log(id);
+        $http.get('/product/contactlist/' + id).success(deferred.resolve)
             .error(deferred.reject);
 
         return deferred.promise;
     }
 
-    this.update = function(car){
+    this.update = function(contact){
         var deferred = $q.defer();
-        //console.log("data comes into service");
-        console.log(car);
-        $http.put('/product/contactlist/', car).success(deferred.resolve)
+        var contact = contact;
+        console.log(contact);
+        $http.put('/product/contactlist/', contact).success(deferred.resolve)
             .error(deferred.reject);
         return deferred.promise;
     }
