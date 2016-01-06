@@ -3,7 +3,7 @@
 	myApp.controller('contactlistCtrl', contactlistCtrl);
 
 	function contactlistCtrl(ContactlistService, $uibModal, $log, $scope) {
-
+		$scope.title = 'Lorem Ipsum';
 		var vm = this;
 		vm.results = [];
 		vm.removeConfirmModal=removeConfirmModal;

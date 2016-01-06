@@ -17,6 +17,9 @@
             },
             templateUrl: "directive/result_list.html",
             transclude: true,
+            //link: function(scope, el, attrs, ctrl, transclude) {
+            //    el.find('.content').append(transclude());
+            //}
         }
 
     }

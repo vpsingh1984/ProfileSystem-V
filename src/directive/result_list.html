@@ -1,4 +1,5 @@
 <div class="container">
+    <ng-transclude></ng-transclude>
     <div class="panel panel-default">
         <div class="panel-heading"> 
             <button class="btn btn-success" ng-click="otherActions[0].handler()">{{otherActions[0].label}}</button>
@@ -22,17 +23,14 @@
                 </tbody>
             </table>
         </div>
+
         <div class="panel-footer">
             <div class="text-right">
                 <!--{{paginationData}}-->
-                <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemPerPage" ng-model="paginationData.currentPage"  ng-change="paginationData.handler()"></uib-pagination>
+                <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemPerPage" ng-model="paginationData.currentPage"  ng-change="paginationData.handler()">
+
+                </uib-pagination>
             </div>
         </div>
     </div>
 </div>
-<!--<script>-->
-    <!--$(document).ready(function() {-->
-        <!--$('#example').DataTable();-->
-    <!--} );-->
-<!--</script>-->
-<!-- <button ng-click="confirmModal()" type="button">Click Modal</button> -->

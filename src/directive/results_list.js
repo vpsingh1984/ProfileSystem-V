@@ -1,10 +1,9 @@
 (function() {
     "use strict";
     myApp.controller("ResultsListCtrl", ResultsListCtrl);
-    function ResultsListCtrl(){
+    function ResultsListCtrl($scope){
         var vm = this;
-        initialize();
-        //vm.remove = remove;
+        initialize()
 
         function initialize() {
             vm.getFilterData = getFilterData;
@@ -13,11 +12,6 @@
             return obj[key] === undefined ? "---": obj[key];
         }
 
-
-        //function remove(id){
-        //    alert(id+"Rachit");
-        //
-        //}
     }
 
 }());
