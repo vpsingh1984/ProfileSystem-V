@@ -1,9 +1,9 @@
 
 myApp.service('ContactlistService', ['$http', '$q', function($http, $q) {
 
-    this.getList = function() {
+    this.getList = function(limit, page) {
         var deferred = $q.defer();
-        $http.get('/product/contactlist').success(deferred.resolve)
+        $http.get('/product/contactlist/'+limit+"/"+page).success(deferred.resolve)
             .error(deferred.reject);
 
         return deferred.promise;

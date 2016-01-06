@@ -8,14 +8,15 @@
 		vm.results = [];
 		vm.confirmModal=confirmModal;
 		vm.addCarModal = addCarModal;
+		vm.editCarModal = editCarModal;
+		vm.onPageChanged = onPageChanged;
+		var limit = 5;
+		var page = 1;
 
 		initialize();
 
 		function initialize() {
-			console.log("calling car list");
-			CarlistService.getList().then(function (response) {
-				vm.results = response;
-			});
+			fetchData(true);
 			vm.columns = [{
 				label: "Brand Name",
 				field: "brand"
@@ -40,6 +41,25 @@
 				handler: vm.addCarModal,
 			}];
 		};
+
+		function fetchData(isFirstCall){
+			CarlistService.getList(limit, page).then(function (response) {
+				vm.results = response.data;
+				if(isFirstCall){
+					vm.paginationData = {
+						totalItems: response.totalItems,
+						currentPage:1,
+						itemPerPage:limit,
+						handler : vm.onPageChanged
+					}
+				}
+			});
+		}
+
+		function onPageChanged(){
+			page = vm.paginationData.currentPage;
+			fetchData();
+		}
 
 		function confirmModal(item) {
 			//alert('vijay');
@@ -95,7 +115,28 @@
 		    });
 		};
 
+		function editCarModal(car) {
+			//alert('vijay');
 
+			var modalInstance = $uibModal.open({
+				animation: true,
+				templateUrl: "car-list/edit_carlist.html",
+				controller: 'EditCarCtrl as vm',
+				size: "md",
+				resolve: {
+					carId: function () {
+						return car._id;
+					}
+				}
+			});
+
+			modalInstance.result.then(function (response) {
+				fetchData();
+			}, function () {
+				console.log("Error in adding");
+				//$log.info('Modal dismissed at: ' + new Date());
+			});
+		};
 	}
 
 }());

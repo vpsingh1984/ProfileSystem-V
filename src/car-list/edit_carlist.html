@@ -1,25 +1,25 @@
 
 <div class="panel panel-default">
     <div class="panel-heading"> 
-        <h3>Edit Contact</h3>
+        <h3>Edit Car List</h3>
     </div>
     <div class="panel-body">
         <table class="table table-border">
             <tbody>
                 <tr><td>Name</td>
-                    <td><input name="name" type="text" class="form-control" ng-model="vm.contact.name" /></td>
+                    <td><input name="name" type="text" class="form-control" ng-model="vm.car.brand" /></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input name="email" type="text" class="form-control" ng-model="vm.contact.email" /></td>
+                    <td><input name="email" type="text" class="form-control" ng-model="vm.car.modal" /></td>
                 </tr>
                 <tr><td>Number</td>
-                    <td><input name="number" type="text" class="form-control" ng-model="vm.contact.number" /></td>
+                    <td><input name="number" type="text" class="form-control" ng-model="vm.car.price" /></td>
                     <td>
                 </tr>
                 <tr>
                     <td colspan="2" class="text-right">
-                        <button type="button" class="btn btn-info" ng-click="vm.updateContact(vm.contact)">Update</button>
+                        <button type="button" class="btn btn-info" ng-click="vm.updateCar(vm.car)">Update</button>
                         <button class="btn btn-default" ng-click="vm.close()">Cancel</button>
                     </td>
                 </tr>

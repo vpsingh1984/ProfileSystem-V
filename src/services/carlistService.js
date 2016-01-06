@@ -1,9 +1,9 @@
 
 myApp.service('CarlistService', ['$http', '$q', function($http, $q) {
 
-    this.getList = function() {
+    this.getList = function(limit, page) {
         var deferred = $q.defer();
-        $http.get('/product/carlist').success(deferred.resolve)
+        $http.get('/product/carlist/'+limit+"/"+page).success(deferred.resolve)
             .error(deferred.reject);
 
         return deferred.promise;
@@ -26,7 +26,7 @@ myApp.service('CarlistService', ['$http', '$q', function($http, $q) {
         return deferred.promise;
     }
 
-    this.edit = function (id){
+    this.getCarById = function (id){
         var deferred = $q.defer();
         console.log(id);
         $http.get('/product/carlist/' + id).success(deferred.resolve)

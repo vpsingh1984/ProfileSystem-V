@@ -4,24 +4,35 @@
             <button class="btn btn-success" ng-click="otherActions[0].handler()">{{otherActions[0].label}}</button>
         </div>
         <div class="panel-body">
-            <table class="table tabel-striped">
+            <table id="example" class="table table-striped table-bordered">
                 <thead>
-                <tr>
-                    <th ng-repeat="column in columns">{{column.label}}</th>
-                </tr>
+                    <tr>
+                        <th ng-repeat="column in columns">{{column.label}}</th>
+                        <th>&nbsp;</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="result in results">
-                    <td  ng-repeat="column in columns">{{vm.getFilterData(result, column.field)}}</td>
-                    <td>
-                        <button class="btn btn-default" ng-click="itemActions[1].handler(result)">{{itemActions[1].label}}</button>
-                        <button class="btn btn-default" ng-click="itemActions[0].handler(result)">{{itemActions[0].label}}</button>
-                    </td>
-                </tr>
+                    <tr ng-repeat="result in results">
+                        <td  ng-repeat="column in columns">{{vm.getFilterData(result, column.field)}}</td>
+                        <td>
+                            <button class="btn btn-default" ng-click="itemActions[1].handler(result)">{{itemActions[1].label}}</button>
+                            <button class="btn btn-default" ng-click="itemActions[0].handler(result)">{{itemActions[0].label}}</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <!--{{paginationData}}-->
+                <uib-pagination total-items="paginationData.totalItems" items-per-page="paginationData.itemPerPage" ng-model="paginationData.currentPage"  ng-change="paginationData.handler()"></uib-pagination>
+            </div>
+        </div>
     </div>
 </div>
-
+<!--<script>-->
+    <!--$(document).ready(function() {-->
+        <!--$('#example').DataTable();-->
+    <!--} );-->
+<!--</script>-->
 <!-- <button ng-click="confirmModal()" type="button">Click Modal</button> -->

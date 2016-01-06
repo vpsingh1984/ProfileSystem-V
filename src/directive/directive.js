@@ -12,6 +12,8 @@
                 columns:"=",
                 itemActions: "=",
                 otherActions: "=",
+                showCheckboxes:"=",
+                paginationData:"=",
             },
             templateUrl: "directive/result_list.html",
             transclude: true,

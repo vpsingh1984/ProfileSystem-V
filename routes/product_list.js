@@ -3,12 +3,24 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = require("../db_conf/connector");
 
-router.get('/carlist', function(req, res){
-	console.log('get request for car');
+router.get('/carlist/:limit/:page', function(req, res){
+	var limit = parseInt(req.params.limit);
+	var page = parseInt(req.params.page)-1;
 
-	db.carlist.find(function(err, docs){
-		//console.log(docs);
-		res.json(docs);
+	var skip = limit*page;
+
+	console.log("Limit:"+limit);
+	console.log("Page:"+page);
+
+	var response = {};
+
+	//console.log('get request');
+	db.carlist.aggregate({$skip:skip},{$limit:limit}, function(err, docs){
+		response.data = docs;
+		db.carlist.count(function(err, docs){
+			response.totalItems = docs;
+			res.json(response);
+		});
 	});
 });
 
@@ -55,12 +67,24 @@ router.put('/carlist/', function(req, res){
 
 
 //contact list
-router.get('/contactlist', function(req, res){
+router.get('/contactlist/:limit/:page', function(req, res){
+	var limit = parseInt(req.params.limit);
+	var page = parseInt(req.params.page)-1;
+
+	var skip = limit*page;
+
+	console.log("Limit:"+limit);
+	console.log("Page:"+page);
+
+	var response = {};
+
 	//console.log('get request');
-	db.contactlist.find(function(err, docs){
-		console.log("*******************************************");
-		//console.log(docs);
-		res.json(docs);
+	db.contactlist.aggregate({$skip:skip},{$limit:limit}, function(err, docs){
+		response.data = docs;
+		db.contactlist.count(function(err, docs){
+			response.totalItems = docs;
+			res.json(response);
+		});
 	});
 });
 

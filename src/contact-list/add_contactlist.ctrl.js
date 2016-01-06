@@ -9,7 +9,6 @@ myApp.controller('AddContactCtrl', function (ContactlistService, $uibModalInstan
   }
 
   vm.addContact = function (contact){
-    alert('hello');
     ContactlistService.addContactList(contact).then(function (response) {
       $uibModalInstance.close();
     });

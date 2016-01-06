@@ -9,17 +9,14 @@
 		vm.removeConfirmModal=removeConfirmModal;
 		vm.addContactModal = addContactModal;
 		vm.editContactModal = editContactModal;
+		vm.onPageChanged = onPageChanged;
+		var limit = 5;
+		var page = 1;
 
 		initialize();
 
-
-		function fetchData(){
-			ContactlistService.getList().then(function (response) {
-				vm.results = response;
-			});
-		}
 		function initialize() {
-			fetchData();
+			fetchData(true);
 			vm.columns = [{
 				label: "Name",
 				field: "name"
@@ -47,6 +44,27 @@
 
 		};
 
+
+		function fetchData(isFirstCall){
+			ContactlistService.getList(limit, page).then(function (response) {
+				vm.results = response.data;
+				if(isFirstCall){
+					vm.paginationData = {
+						totalItems: response.totalItems,
+						currentPage:1,
+						itemPerPage:limit,
+						handler : vm.onPageChanged
+					}
+				}
+			});
+		}
+
+
+		function onPageChanged(){
+			page = vm.paginationData.currentPage;
+			fetchData();
+		}
+
 		function removeConfirmModal(item) {
 			//alert('vijay');
 		    var modalInstance = $uibModal.open({
@@ -63,6 +81,7 @@
 		    });
 
 		    modalInstance.result.then(function (response) {
+				vm.paginationData.totalItems--;
 				fetchData();
 		    }, function () {
 		    	console.log("Dismiss");
@@ -86,7 +105,7 @@
 		    });
 
 		    modalInstance.result.then(function (response) {
-		      	//var flag = response;
+				vm.paginationData.totalItems++;
 				fetchData();
 		    }, function () {
 		    	console.log("Error in adding");
