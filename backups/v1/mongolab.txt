@@ -1,1 +1,0 @@
-mongodb://userprofile:userprofile@ds041404.mongolab.com:41404/userprofile
