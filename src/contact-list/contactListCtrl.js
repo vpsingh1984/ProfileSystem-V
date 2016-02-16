@@ -3,13 +3,15 @@
 	myApp.controller('contactlistCtrl', contactlistCtrl);
 
 	function contactlistCtrl(ContactlistService, $uibModal, $log, $scope) {
-		$scope.title = 'Lorem Ipsum';
+
 		var vm = this;
+		$scope.title = 'Lorem Ipsum';
 		vm.results = [];
 		vm.removeConfirmModal=removeConfirmModal;
 		vm.addContactModal = addContactModal;
 		vm.editContactModal = editContactModal;
 		vm.onPageChanged = onPageChanged;
+		vm.confirmRemoveRecords = confirmRemoveRecords;
 		var limit = 5;
 		var page = 1;
 
@@ -26,6 +28,14 @@
 			}, {
 				label: "Number",
 				field: "number"
+			}];
+
+			vm.bulkActions = [{
+				label: "Add New Contact",
+				handler: vm.addContactModal,
+			}, {
+				label: "Remove Records",
+				handler: vm.confirmRemoveRecords,
 			}];
 
 			vm.itemActions = [{
@@ -134,6 +144,18 @@
 		    	console.log("Error in adding");
 		      //$log.info('Modal dismissed at: ' + new Date());
 		    });
+		};
+
+		function confirmRemoveRecords () {
+			alert("hello vj");
+			/**
+			 * Open a confirmation modal to prompt the user before removing selected Event(s)
+			 * @param {object|array} events The selected Event or Array of selected Events
+			 */
+			//ConfirmModalService.openModal({message: "Are you sure you want to remove the Event(s)?"})
+			//	.then(function() {
+			//		removeEvents(events);
+			//	});
 		};
 
 	}

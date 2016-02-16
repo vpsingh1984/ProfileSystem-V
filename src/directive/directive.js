@@ -2,26 +2,23 @@
     "use strict";
     myApp.directive("resultsList", resultsList);
 
-    function resultsList(){
+    function resultsList() {
         return {
-            //bindToController: true,
-            controller: "ResultsListCtrl as vm",
+            bindToController: true,
+            controller: "ResultsListCtrl",
+            controllerAs:"vm",
             restrict: "E",
             scope: {
                 results: "=",
-                columns:"=",
+                columns: "=",
                 itemActions: "=",
                 otherActions: "=",
-                showCheckboxes:"=",
-                paginationData:"=",
+                showCheckboxes: "=",
+                paginationData: "=",
+                bulkActions: "=",
             },
             templateUrl: "directive/result_list.html",
-            transclude: true,
-            //link: function(scope, el, attrs, ctrl, transclude) {
-            //    el.find('.content').append(transclude());
-            //}
+            transclude: true
         }
-
     }
-
 }());

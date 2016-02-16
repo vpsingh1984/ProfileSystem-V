@@ -9,7 +9,6 @@ myApp.controller('AddCarCtrl', function (CarlistService, $uibModalInstance, car)
   }
 
   vm.addCar = function (car){
-    alert('hello');
     CarlistService.addCarList(car).then(function (response) {
       $uibModalInstance.close();
     });

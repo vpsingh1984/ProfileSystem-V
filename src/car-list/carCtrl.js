@@ -91,7 +91,6 @@
 		};
 
 		function addCarModal(car) {
-			//alert('vijay');
 		    var modalInstance = $uibModal.open({
 		      animation: true,
 		      templateUrl: "car-list/add_carlist.html",
@@ -105,13 +104,10 @@
 		    });
 
 		    modalInstance.result.then(function (response) {
-		      	//var flag = response;
-		      	CarlistService.getList().then(function (response) {
-					vm.results = response;
-				});
+				vm.paginationData.totalItems++;
+				fetchData();
 		    }, function () {
 		    	console.log("Error in adding");
-		      //$log.info('Modal dismissed at: ' + new Date());
 		    });
 		};
 
