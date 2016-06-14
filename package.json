@@ -1,0 +1,42 @@
+{
+  "name": "authentication-passport",
+  "version": "1.0.0",
+  "description": "passport authentication",
+  "main": "server.js",
+  "dependencies": {
+    "angular-utils-pagination": "^0.9.3",
+    "express": "^4.13.3",
+    "git": "^0.1.5",
+    "mongojs": "^1.4.1",
+    "nodemon": "^1.8.1",
+    "bcryptjs":"*",
+    "body-parser":"*",
+    "connect-flash":"*",
+    "cookie-parser":"^1.4.1",
+    "express": "*",
+    "express-handlebars":"*",
+    "express-messages":"*",
+    "express-session":"*",
+    "express-validator":"*",
+    "mongodb":"*",
+    "mongoose":"*",
+    "passport":"*",
+    "passport-http":"*",
+    "passport-local":"*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpsingh1984/ProfileSystem-Vcas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vpsingh1984/ProfileSystem-Vcas/issues"
+  },
+  "homepage": "https://github.com/vpsingh1984/ProfileSystem-Vcas#readme"
+}

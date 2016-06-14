@@ -17,10 +17,12 @@
                 if(vm.results[i].isChecked === true){
                     localResult.data.push(vm.results[i]);
                 }
+                console.log(localResult);
             }
             if(vm.results.length === localResult.data.length){
                 localResult.allSelected = true;
             }
+
             return localResult;
         }
 

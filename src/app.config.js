@@ -4,9 +4,13 @@ var myApp = angular.module('profile', ['ngRoute', 'ngAnimate', 'ui.bootstrap', '
 myApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/', {
-                templateUrl: 'views/signin.html',
-                controller: 'signinCtrl as sign'
+            when('/login', {
+                templateUrl: 'user-auth/login.html',
+                controller: 'signinCtrl as vm'
+            }).
+            when('/register', {
+                templateUrl: 'user-auth/register.html',
+                controller: 'registerCtrl'
             }).
             when('/contactlist', {
                 templateUrl: 'contact-list/contactlist.html',
@@ -17,6 +21,6 @@ myApp.config(['$routeProvider',
                 controller: 'carlistCtrl as vm'
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/login'
             });
     }]);

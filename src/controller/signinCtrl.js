@@ -1,6 +1,7 @@
 
 myApp.controller('signinCtrl', ['$scope', '$http','SigninService', '$window', function($scope, $http, SigninService, $window){
   this.signIn = function(creds){
+      console.log(creds);
     console.log("calling Signin");
     param = {};
     param.username = creds.username;
